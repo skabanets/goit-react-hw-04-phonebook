@@ -1,4 +1,6 @@
-# React-hw-03-phonebook
+# React-hw-04-phonebook
+
+Refactoring code using hooks
 
 ## Contacts book
 
