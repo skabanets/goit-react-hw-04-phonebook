@@ -16,8 +16,6 @@ export const Phonebook = () => {
   const [filter, setFilter] = useState('');
 
   const addContact = (name, number) => {
-    console.log(name, number);
-
     if (findContact(name)) return;
 
     setContacts(prev => [...prev, { id: nanoid(), name, number }]);

@@ -2,13 +2,20 @@ import React, { useState } from 'react';
 import { Form, FormButton, Input, InputLabel } from './ContactForm.styled';
 
 export const ContactForm = ({ addContact }) => {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+
   const handleSubmit = e => {
     e.preventDefault();
 
-    const name = e.target.elements.name.value;
-    const number = e.target.elements.number.value;
     addContact(name, number);
-    e.target.reset();
+    setName('');
+    setNumber('');
+  };
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    name === 'name' ? setName(value) : setNumber(value);
   };
 
   return (
@@ -18,6 +25,8 @@ export const ContactForm = ({ addContact }) => {
         <Input
           type="text"
           name="name"
+          value={name}
+          onChange={handleChange}
           required
           placeholder="Enter contact name"
           minLength={3}
@@ -28,6 +37,8 @@ export const ContactForm = ({ addContact }) => {
         <Input
           type="tel"
           name="number"
+          value={number}
+          onChange={handleChange}
           required
           minLength={9}
           maxLength={13}
